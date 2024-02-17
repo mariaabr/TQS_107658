@@ -51,15 +51,14 @@ public class DipTest {
 
     }
 
-    // @DisplayName("new Dip rejects out of range elements")
-    // @Test
-    // public void testConstructorFromBadRanges() {
-    //     // creating Dip with numbers or starts outside the expected range
-    //     // expects an exception
-    //     assertThrows(IllegalArgumentException.class,
-    //             () -> new Dip( new int[]{10, 11, 12, 13, Dip.NUMBERS_RANGE_MAX * 2}, new int[]{1,2} ) );
-    //     assertThrows(IllegalArgumentException.class,
-    //             () -> new Dip( new int[]{11, 12, 13, 14, 15}, new int[]{ Dip.STARS_RANGE_MAX*2 ,1} ) );
-
-    // }
+    @DisplayName("new Dip rejects out of range elements")
+    @Test
+    public void testConstructorFromBadRanges() {
+        // creating Dip with numbers or starts outside the expected range
+        // expects an exception
+        assertThrows(IllegalArgumentException.class,
+                () -> new Dip( new int[]{10, 11, 12, 13, Dip.NUMBERS_RANGE_MAX * 2}, new int[]{1,2} ) );
+        assertThrows(IllegalArgumentException.class,
+                () -> new Dip( new int[]{11, 12, 13, 14, 15}, new int[]{ Dip.STARS_RANGE_MAX * 2 ,1} ) );
+    }
 }
