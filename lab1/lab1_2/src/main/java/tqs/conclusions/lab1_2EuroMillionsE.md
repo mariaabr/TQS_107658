@@ -2,7 +2,11 @@ Comparando os resultados da cobertura para o caso da classe BoundedSetOfNaturals
 é de notar uma melhoria na cobertura, aumentando a percentagem de 54% para 78%.
 
 ## 1º resultados
-<img src="img/coveraglab1_2sets1">
+<p align="center">
+<img src="img/coveraglab1_2sets1.png">
+</p>
 
 ## 2º resultados
-<img src="img/coveraglab1_2sets2">
+<p align="center">
+<img src="img/coveraglab1_2sets2.png">
+</p>
