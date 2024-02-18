@@ -3,10 +3,10 @@ Comparando os resultados da cobertura para o caso da classe BoundedSetOfNaturals
 
 ## 1º resultados
 <p align="center">
-<img src="img/coveraglab1_2sets1.png">
+    <img src="img/coveraglab1_2sets1.png">
 </p>
 
 ## 2º resultados
 <p align="center">
-<img src="img/coveraglab1_2sets2.png">
+    <img src="/img/coveraglab1_2sets2.png">
 </p>
