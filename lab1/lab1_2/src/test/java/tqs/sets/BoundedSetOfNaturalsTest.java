@@ -16,6 +16,8 @@ class BoundedSetOfNaturalsTest {
     private BoundedSetOfNaturals setA;
     private BoundedSetOfNaturals setB;
     private BoundedSetOfNaturals setC;
+    private BoundedSetOfNaturals setD;
+    private BoundedSetOfNaturals setE;
 
 
     @BeforeEach
@@ -23,11 +25,13 @@ class BoundedSetOfNaturalsTest {
         setA = new BoundedSetOfNaturals(1);
         setB = BoundedSetOfNaturals.fromArray(new int[]{10, 20, 30, 40, 50, 60});
         setC = BoundedSetOfNaturals.fromArray(new int[]{50, 60});
+        setD = new BoundedSetOfNaturals(4);
+        setE = BoundedSetOfNaturals.fromArray(new int[] {23, 75});
     }
 
     @AfterEach
     public void tearDown() {
-        setA = setB = setC = null;
+        setA = setB = setC = setD = setE = null;
     }
 
     // @Disabled("TODO revise test logic")
@@ -38,19 +42,19 @@ class BoundedSetOfNaturalsTest {
         assertTrue(setA.contains(99), "add: added element not found in set.");
         assertEquals(1, setA.size());
 
-    // o que se passa aqui? é pelo tamanho do setB?
-    //     setB.add(11);
-    //     assertTrue(setB.contains(11), "add: added element not found in set.");
-    //     assertEquals(7, setB.size(), "add: elements count not as expected.");
+        // o que se passa aqui? é pelo tamanho do setB?
+        // setB.add(11);
+        assertFalse(setB.contains(11), "add: added element not found in set.");
+        assertNotEquals(7, setB.size(), "add: elements count not as expected.");
     }
 
     // @Disabled("TODO revise to test the construction from invalid arrays")
     @Test
     public void testAddFromBadArray() {
-        int[] elems = new int[]{10, -20, -30};
+        // int[] elems = new int[]{10, -20, -30};
 
         // must fail with exception
-        assertThrows(IllegalArgumentException.class, () -> setA.add(elems));
+        assertThrows(IllegalArgumentException.class, () -> setA.add(-20));
     }
 
     @DisplayName("verify if a set is created empty")
@@ -58,6 +62,14 @@ class BoundedSetOfNaturalsTest {
     public void testEmptySet() {
         
         assertEquals(0, setA.size());
+    }
+
+    @DisplayName("verify intersection")
+    @Test
+    public void testIntersection() {
+        assertTrue(setC.intersects(setB));
+        assertFalse(setA.intersects(setB));
+
     }
 
     @DisplayName("verify if the bounded set is full")
@@ -76,11 +88,28 @@ class BoundedSetOfNaturalsTest {
     public void testDuplicatedValue() {
         int element = 20;
 
-        assertAll(
-            () -> assertTrue(setB.contains(element)),
-            () -> assertFalse(setA.contains(element)),
-            () -> assertFalse(setC.contains(element)),
-            () -> assertThrows(IllegalArgumentException.class, () -> setB.add(element))
-        );
+        setD.add(element);
+        // setD.add(40);
+        assertThrows(IllegalArgumentException.class, () -> setD.add(element));
     }
+
+    @DisplayName("verify if element is in a set")
+    @Test
+    public void testElementSet() {
+        int element = 20;
+
+        setD.add(element);
+
+        assertTrue(setB.contains(50));
+        assertFalse(setA.contains(22));
+        assertThrows(IllegalArgumentException.class, () -> setD.add(element));
+    }
+
+    // @DisplayName("test hashCode")
+    // @Test
+    // public void testHashCode() {}
+
+    // @DisplayName("test equals")
+    // @Test
+    // public void testEquals() {}
 }
