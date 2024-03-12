@@ -1,33 +1,23 @@
 // package ua.tqs;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.slf4j.Logger;
-
-import static java.lang.invoke.MethodHandles.lookup;
-import static org.slf4j.LoggerFactory.getLogger;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.bonigarcia.seljup.SeleniumJupiter;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SeleniumJupiter.class)
 public class BuyflightWebdriverTest {
-
-    static final Logger log = getLogger(lookup().lookupClass());
-
+    
     @Test
-    public void testbuyflight() {
-        // Test name: testbuyflight
-        // Step # | name | target | value
+    public void test(FirefoxDriver driver) {
         // 1 | open | / |
         driver.get("https://blazedemo.com/");
         // 2 | setWindowSize | 550x691 |
