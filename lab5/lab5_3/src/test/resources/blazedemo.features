@@ -1,0 +1,23 @@
+@calc_sample
+
+Feature: Book search
+    To allow a customer to find and buy a flight.
+
+    Scenario: Buy a flight from Boston to New York
+    
+        Given a page of the BlazeDemo
+        When I search for a flight from 'Boston' to 'New York' and click the button
+        Then I choose the third flight and click 'Choose This Flight'
+            And fill the name input with 'MR'
+            And fill the address input with 'street house 123'
+            And fill the city input with 'chicago'
+            And fill the state input with 'chicago'
+            And fill the zipcode input with '1234-567'
+            And fill the select the card type 'Visa'
+            And fill the credit card number input with '56789'
+            And fill the month input with '12'
+            And fill the year input with '2022'
+            And fill the the name on card input with 'MR'
+            And select the remember me option
+            And click the 'Purchase Flight' button
+            And receive the confirmation
