@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Trips</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bus_trips/src/main/resources/style.css">
+    <style>
+        p a {
+            text-decoration: none;
+        }
+
+        p a:hover {
+            color: rgb(4, 117, 108);
+        }
+
+        .bg-body-tertiary {
+            background-color: rgb(4, 117, 108) !important;
+
+            margin-bottom: 100px;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .search-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .search-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        input.form-control:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .form-select:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .select-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .select-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        th,
+        td {
+            text-align: left;
+        }
+
+        .btn-col {
+            text-align: right;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Bus Trips</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="search trip">
+            <form id="search-form" class="d-flex ms-auto" action="tripsList.html" method="GET">
+                <input class="form-control me-2" type="search" id="from-input" placeholder="From" aria-label="From">
+                <input class="form-control me-2" type="search" id="to-input" placeholder="To" aria-label="To">
+                <input class="form-control me-2" type="date" placeholder="Date" aria-label="Date">
+                <select class="form-select me-2" aria-label="Number of Passengers">
+                    <option selected>Number of Passengers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <input class="form-control me-2" type="text" id="currency-input" placeholder="Currency" aria-label="Currency">
+                <button id="search-trip-btn" class="btn btn-outline search-trip" type="button">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.full.min.js"></script>
+
+    <script>
+        $("#search-trip-btn").click(function () {
+            var from = $(".form-control:eq(0)").val();
+            var to = $(".form-control:eq(1)").val();
+            var date = $(".form-control:eq(2)").val();
+            var passengers = $(".form-select").val();
+            var currency = $(".form-control:eq(3)").val();
+
+            console.log("From:", from);
+            console.log("To:", to);
+            console.log("Date:", date);
+            console.log("Passengers:", passengers);
+            console.log("Currency:", currency);
+
+            getCityId(from, function (fromId) {
+                getCityId(to, function (toId) {
+                    handleCityIds(fromId, toId, date, passengers, currency);
+                });
+            });
+        });
+
+        function handleCityIds(fromId, toId, date, passengers, currency) {
+            // build URL with trip data
+            var url = `tripsList.html?from_id=${encodeURIComponent(fromId)}&to_id=${encodeURIComponent(toId)}&date=${encodeURIComponent(date)}&adult=${encodeURIComponent(passengers)}&currency=${encodeURIComponent(currency)}`;
+            console.log("URL to be redirected:", url);
+
+            // redirect to tripsList.html
+            window.location.href = url;
+        }
+
+        function getCityId(cityName, callback) {
+            $.ajax({
+                url: '/api/autocomplete',
+                type: 'GET',
+                data: { query: cityName },
+                success: function (response) {
+                    // response with field 'id'
+                    callback(response.city.id);
+                },
+                error: function (error) {
+                    console.log("error: ", error);
+                    callback(null); // null if error
+                }
+            });
+        }
+    </script>
+
+    <!-- <script>
+        document.getElementById("search-trip-btn").addEventListener("click", function () {
+
+            // get form data
+            var from = document.querySelector('input[aria-label="From"]').value;
+            var to = document.querySelector('input[aria-label="To"]').value;
+            var date = document.querySelector('input[aria-label="Date"]').value;
+            var passengers = document.querySelector('select[aria-label="Number of Passengers"]').value;
+
+        // build URL with trip data
+        var url = `tripsList.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(date)}&passengers=${encodeURIComponent(passengers)}`;
+
+        // redirect to tripsList.html
+        window.location.href = url;
+        });
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Outros scripts -->
+</body>
+
+</html>

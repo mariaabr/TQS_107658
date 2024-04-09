@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Trips</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bus_trips/src/main/resources/style.css">
+    <!-- <link href="bus_trips/src/main/resources/static/main.js"> -->
+
+    <style>
+        p a {
+            text-decoration: none;
+        }
+
+        p a:hover {
+            color: rgb(4, 117, 108);
+        }
+
+        .bg-body-tertiary {
+            background-color: rgb(4, 117, 108) !important;
+
+            margin-bottom: 100px;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .search-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .search-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        input.form-control:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .form-select:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .select-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .select-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        th,
+        td {
+            text-align: left;
+        }
+
+        .btn-col {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Bus Trips</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- <div class="search trip">
+            <form class="d-flex ms-auto">
+                <input class="form-control me-2" type="search" placeholder="From" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="To" aria-label="Search">
+                <button class="btn btn-outline search-trip" type="submit" href="#tripsList">Search</button>
+            </form>
+        </div> -->
+
+        <h2>Available Trips</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Duration</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="trips-list">
+                <!-- dynamic trip add -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <script>
+        let tripIdCounter = 1;
+        let tripsData;
+        // let tripsList = document.getElementById('trips-list');
+
+        function fetchAndDisplayTrips() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Obtenha os valores de fromId e toId dos parâmetros de consulta
+            const fromId = urlParams.get('from_id');
+            console.log("from_id: ", fromId);
+            const toId = urlParams.get('to_id');
+            const date = urlParams.get('date');
+
+            const date_info = date.split("-");
+            // format dd.mm.yyyy
+            const new_date = date_info[2] + "." + date_info[1] + "." + date_info[0];
+
+            console.log("new_date: " + new_date);
+
+            const adult = urlParams.get('adult');
+
+            // AJAX solicitation to endpoint /api/trips with dynamic IDs
+            fetch(`http://localhost:9091/api/trips?from_id=${fromId}&to_id=${toId}&date=${new_date}&adult=${adult}`)
+                .then(response => response.json()) // json conversion
+                .then(data => {
+                    console.log("data: " + JSON.stringify(data));
+                    tripsData = data;
+                    console.log("tripsData: " + JSON.stringify(tripsData));
+                    const tripsList = document.getElementById('trips-list');
+                    tripsList.innerHTML = '';
+
+                    // build trip with trip data
+                    data.forEach(trip => {
+                        const row = document.createElement('tr');
+
+                        // unique ID to each trip
+                        trip.id = tripIdCounter++;
+
+                        // format departure time
+                        const depTime = new Date(trip.depOffset);
+                        const formattedDepTime = `${('0' + depTime.getHours()).slice(-2)}:${('0' + depTime.getMinutes()).slice(-2)}h`;
+
+                        // get the price from the fares array and currency if exists
+                        // const price = trip.fares && trip.fares.length > 0 ? trip.fares[0].price : 'N/A';
+
+                        let price = 'N/A';
+                        if (trip.fares && trip.fares.length > 0) {
+                            price = trip.fares[0].price;
+                            const currency = trip.fares[0].currency;
+                            if (currency !== null) {
+                                price += ` ${currency}`;
+                            }
+                        }
+
+                        // row.dataset.id = trip.id;
+                        // row.dataset.from = trip.depName;
+                        // row.dataset.to = trip.arrName;
+                        // row.dataset.departs = formattedDepTime;
+                        // row.dataset.arrives = formattedDepTime;
+                        // row.dataset.price = price;
+
+                        row.innerHTML = `
+                        <td>${trip.depName}: ${formattedDepTime}</td>
+                        <td>${trip.arrName}: ${formattedDepTime}</td>
+                        <td>${trip.duration}</td>
+                        <td>${price}</td>
+                        <td class="btn-col"><button class="btn btn-outline select-trip" onclick="selectTrip('${trip.id}')">Book this Trip</button></td>
+                    `;
+                        tripsList.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erro ao obter dados das viagens:', error));
+        }
+
+        // select a trip
+        function selectTrip(id) {
+            alert('Bus Trip Booked: ' + id);
+
+            // console.log("tripsData: " + JSON.stringify(tripsData));
+            const selectedTrip = tripsData[id - 1];
+            // console.log("selectedTrip: "+ JSON.stringify(selectedTrip));
+
+            // build URL with trip data
+            // const url = `reservation.html?from=${encodeURIComponent(trip.from)}&to=${encodeURIComponent(trip.to)}&departs=${encodeURIComponent(trip.departs)}&arrives=${encodeURIComponent(trip.arrives)}&price=${encodeURIComponent(trip.price)}`;
+            const url = `reservation.html?from=${encodeURIComponent(selectedTrip.depName)}&to=${encodeURIComponent(selectedTrip.arrName)}&price=${encodeURIComponent(selectedTrip.fares[0].price)}`;
+
+            // redirect to reservation.html
+            window.location.href = url;
+
+            // window.location.href = 'reservation.html?id=' + id;
+        }
+
+        // Chama a função fetchAndDisplayTrips ao carregar a página
+        window.onload = fetchAndDisplayTrips;
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Outros scripts -->
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+.bg-body-tertiary {
+    background-color: rgb(4, 117, 108) !important;
+
+    margin-bottom: 200px;
+}
+
+.navbar-brand,
+.nav-link {
+    color: white !important; /* Define a cor do texto como branco */
+}

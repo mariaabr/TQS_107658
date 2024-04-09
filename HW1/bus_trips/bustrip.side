@@ -1,0 +1,429 @@
+{
+  "id": "40e53bef-fba9-49a8-8947-c4ac0b870a65",
+  "version": "2.0",
+  "name": "bustrip",
+  "url": "http://localhost:9091",
+  "tests": [{
+    "id": "cfe51212-f4e5-45d8-a092-a805a28d7f11",
+    "name": "Untitled",
+    "commands": [{
+      "id": "3bb6e742-efa9-4e22-9f74-5c1aa37bcb25",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d156182d-6019-4b13-b3cc-8d4a3331a053",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1083x694",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "844c6503-4c05-4208-98b6-a3eb9b1b0ad2",
+      "comment": "",
+      "command": "click",
+      "target": "id=from-input",
+      "targets": [
+        ["id=from-input", "id"],
+        ["css=#from-input", "css:finder"],
+        ["xpath=//input[@id='from-input']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ffc2879-6196-44b6-8e5e-7d9323328c14",
+      "comment": "",
+      "command": "type",
+      "target": "id=from-input",
+      "targets": [
+        ["id=from-input", "id"],
+        ["css=#from-input", "css:finder"],
+        ["xpath=//input[@id='from-input']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Aveiro"
+    }, {
+      "id": "c145f106-880b-4fa5-b22c-24e69fd699bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=to-input",
+      "targets": [
+        ["id=to-input", "id"],
+        ["css=#to-input", "css:finder"],
+        ["xpath=//input[@id='to-input']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebcd9f7c-73ce-4549-867b-cba3bf733437",
+      "comment": "",
+      "command": "type",
+      "target": "id=to-input",
+      "targets": [
+        ["id=to-input", "id"],
+        ["css=#to-input", "css:finder"],
+        ["xpath=//input[@id='to-input']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Viseu"
+    }, {
+      "id": "0283c15f-66e8-4a1a-ab74-84411b6744f3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='date']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09607058-eadf-4a26-bb65-d0f66ab8d66e",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='date']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "2024-04-09"
+    }, {
+      "id": "86bf9773-bd53-413e-b907-dc9c12862974",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-select",
+      "targets": [
+        ["css=.form-select", "css:finder"],
+        ["xpath=//form[@id='search-form']/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e64c66ab-7018-4054-8e50-8143b772bb49",
+      "comment": "",
+      "command": "select",
+      "target": "css=.form-select",
+      "targets": [],
+      "value": "label=1"
+    }, {
+      "id": "40f10172-7f93-47b6-80fe-88260f4d1417",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='1']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/select/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'1')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "36997a22-b387-4c04-bcac-c87ba847ec59",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-trip-btn",
+      "targets": [
+        ["id=search-trip-btn", "id"],
+        ["css=#search-trip-btn", "css:finder"],
+        ["xpath=//button[@id='search-trip-btn']", "xpath:attributes"],
+        ["xpath=//form[@id='search-form']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad78a61d-3068-43f3-8345-3784bd257ce5",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn",
+      "targets": [
+        ["css=tr:nth-child(3) .btn", "css:finder"],
+        ["xpath=//button[@onclick=\"selectTrip('3')\"]", "xpath:attributes"],
+        ["xpath=//tbody[@id='trips-list']/tr[3]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a39954ad-bc6e-4e60-b050-33fda9f24c31",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Bus Trip Booked: 3",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "036ff49c-20ff-460e-b2bc-2c6497a58f95",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "703b1844-dfad-4ec4-ae38-b1aa89b3379a",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "MR"
+    }, {
+      "id": "41fea554-8501-4936-95d9-d043bf675aa1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a103447f-893a-442e-8445-d4bfd196b3cd",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "20"
+    }, {
+      "id": "5a9279bc-acb4-4423-a280-237b6beaa584",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(6)",
+      "targets": [
+        ["css=.form-control:nth-child(6)", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b2f98ab-a28f-49e7-9584-d21aae978694",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(6)",
+      "targets": [
+        ["css=.form-control:nth-child(6)", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "Street Eça, 123"
+    }, {
+      "id": "0f42d476-5651-45c5-8a6d-14a2c8751048",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(8)",
+      "targets": [
+        ["css=.form-control:nth-child(8)", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "85df320d-921c-402b-904b-38f881ddb110",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(8)",
+      "targets": [
+        ["css=.form-control:nth-child(8)", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "Aveiro"
+    }, {
+      "id": "0cd525a3-b139-454b-910e-5fe3a629b1c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(10)",
+      "targets": [
+        ["css=.form-control:nth-child(10)", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[5]", "xpath:idRelative"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e7b991a-0e5a-4be0-858c-16aba0d07af2",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(10)",
+      "targets": [
+        ["css=.form-control:nth-child(10)", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[5]", "xpath:idRelative"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "Aveiro"
+    }, {
+      "id": "c930e2f3-999b-4aa4-8454-24c52d875343",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(12)",
+      "targets": [
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[6]", "xpath:idRelative"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea07249c-ade8-4bbc-be4b-6af3e70ce9f7",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(12)",
+      "targets": [
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[6]", "xpath:idRelative"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "1234-678"
+    }, {
+      "id": "e28cb448-5011-4226-8f07-cf9165f578d4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(19)",
+      "targets": [
+        ["css=.form-control:nth-child(19)", "css:finder"],
+        ["xpath=(//input[@type='text'])[7]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[7]", "xpath:idRelative"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7bba3253-9e86-46d1-9fb1-028e65aa9530",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(19)",
+      "targets": [
+        ["css=.form-control:nth-child(19)", "css:finder"],
+        ["xpath=(//input[@type='text'])[7]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[7]", "xpath:idRelative"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "34589"
+    }, {
+      "id": "b12dd03d-db08-4831-8873-b76232e8ba26",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-sm-5:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.col-sm-5:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[8]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2959878-9fe4-469c-a8e5-2986e49528e2",
+      "comment": "",
+      "command": "type",
+      "target": "css=.col-sm-5:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.col-sm-5:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[8]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "03"
+    }, {
+      "id": "3e64b3db-22ea-4234-89cc-514481b99319",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-sm-5:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.col-sm-5:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[9]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00a4c003-4dff-46b2-9152-861441937d91",
+      "comment": "",
+      "command": "type",
+      "target": "css=.col-sm-5:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.col-sm-5:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[9]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "2027"
+    }, {
+      "id": "83db9ede-c603-4712-b8e6-e988125869ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(22)",
+      "targets": [
+        ["css=.form-control:nth-child(22)", "css:finder"],
+        ["xpath=(//input[@type='text'])[10]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[8]", "xpath:idRelative"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce602016-b781-4b45-96ac-931ebbf714c4",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(22)",
+      "targets": [
+        ["css=.form-control:nth-child(22)", "css:finder"],
+        ["xpath=(//input[@type='text'])[10]", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/input[8]", "xpath:idRelative"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "MR"
+    }, {
+      "id": "620da808-3cbb-4f16-a7fe-2c38d458333b",
+      "comment": "",
+      "command": "click",
+      "target": "id=search-trip-btn",
+      "targets": [
+        ["id=search-trip-btn", "id"],
+        ["css=#search-trip-btn", "css:finder"],
+        ["xpath=//button[@id='search-trip-btn']", "xpath:attributes"],
+        ["xpath=//form[@id='tripForm']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Bus Trip')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0d58cd76-ccd8-4139-bc5e-ed673bcbc3a5",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cfe51212-f4e5-45d8-a092-a805a28d7f11"]
+  }],
+  "urls": ["http://localhost:9091/"],
+  "plugins": []
+}

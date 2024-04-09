@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Trips</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bus_trips/src/main/resources/style.css">
+    <style>
+        .cost {
+            color: rgb(4, 117, 108) !important;
+            /* font-weight: bold; */
+        }
+
+        p a {
+            text-decoration: none;
+        }
+
+        p a:hover {
+            color: rgb(4, 117, 108);
+        }
+
+        .bg-body-tertiary {
+            background-color: rgb(4, 117, 108) !important;
+
+            margin-bottom: 100px;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .search-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .search-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        input.form-control:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .form-select:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+
+        .select-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+        }
+
+        .select-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        th, td {
+            text-align: left;
+        }
+
+        .btn-col {
+            text-align: right;
+        }
+
+        label {
+            color:rgb(49, 50, 50, 0.872);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .label {
+            color:rgb(49, 50, 50, 0.872);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control::placeholder{
+            color: rgba(49, 50, 50, 0.500);
+
+        }
+
+        .buy-trip {
+            color: rgb(4, 117, 108) !important;
+            border-color: rgb(4, 117, 108) !important;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .buy-trip:hover {
+            color: white !important;
+            background-color: rgb(4, 117, 108) !important;
+        }
+
+        select.form-select:focus {
+            outline-color: rgb(4, 117, 108) !important;
+            box-shadow: 0 0 0 0.25rem rgba(4, 117, 108, 0.25) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Bus Trips</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Your trip was selected</h1>
+
+        <!-- bus trip data -->
+        <p>To conclude the purchase please fill the next form.</p>
+        <p class="cost">Total Cost: --.--€</p>
+        <div class="reservation form">
+            <form id="tripForm" class="ms-auto" method="post">
+                <!-- action="submit_trip.php"  -->
+
+                <label for="name">Name</label>
+                <input class="form-control me-4" type="text" placeholder="First and Last Name">
+
+                <label for="age">Age</label>
+                <input class="form-control me-4" type="text" placeholder="Age">
+
+                <label for="address">Address</label>
+                <input class="form-control me-4" type="text" placeholder="Street, Number">
+
+                <label for="location">Location</label>
+                <input class="form-control me-4" type="text" placeholder="Location">
+                
+                <label for="city">City</label>
+                <input class="form-control me-4" type="text" placeholder="City">
+                
+                <label for="zipcode">Zip Code</label>
+                <input class="form-control me-4" type="text" placeholder="Zip Code">
+                
+                <br />
+                <br />
+                <h3>Payment Method</h3>
+
+                <label for="cardType">Card Type</label>
+                <select class="form-select" id="cardType" name="cardType">
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="mb">Multibanco</option>
+                    <option value="mbway">MB Way</option>
+                </select>
+
+                <label for="cardNumber">Credit Card Number</label>
+                <input class="form-control me-4" type="text" placeholder="Credit Card Number">
+
+                <!-- <label for="cardValidity">Credit Card Validity</label>
+                <input class="form-control me-4" type="text" placeholder="Month">
+                <input class="form-control me-4" type="text" placeholder="Year"> -->
+
+                <div class="row">
+                    <label for="cardValidity" class="col-sm-2 col-form-label label">Credit Card Validity</label>
+                    <div class="col-sm-5">
+                        <input class="form-control me-2 label" type="text" placeholder="Month">
+                    </div>
+                    <div class="col-sm-5">
+                        <input class="form-control me-2 label" type="text" placeholder="Year">
+                    </div>
+                </div>                
+
+                <label for="cardName">Name on Credit Card</label>
+                <input class="form-control me-4" type="text" placeholder="Name on Card">
+
+                <button id="search-trip-btn" class="btn btn-outline buy-trip" type="submit" href="index.html">Buy Bus Trip</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('search-trip-btn').addEventListener('click', function () {
+            window.location.href = 'tripsList.html';
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Outros scripts -->
+</body>
+
+</html>
