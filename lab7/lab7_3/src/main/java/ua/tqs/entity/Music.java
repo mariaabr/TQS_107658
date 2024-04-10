@@ -1,18 +1,22 @@
 package ua.tqs.entity;
 
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.Objects;
 
 @Entity
+@Data
 @Table(name = "musics")
 public class Music {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long musicId;
+    private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="music")
+    private String music;
 
     @Column(name="artist")
     private String artist;
@@ -22,64 +26,64 @@ public class Music {
 
     public Music() {}
     
-    public Music(String name, String artist, String label){
-        this.name = name;
+    public Music(String music, String artist, String label){
+        this.music = music;
         this.artist = artist;
         this.label = label;
     }
 
-    public Long getMusicId() {
-        return this.musicId;
-    }
+    // public Long getMusicId() {
+    //     return this.id;
+    // }
 
-    public void setMusicId(Long musicId) {
-        this.musicId = musicId;
-    }
+    // public void setMusicId(Long id) {
+    //     this.id = id;
+    // }
 
-    public String getName() {
-        return this.name;
-    }
+    // public String getMusic() {
+    //     return this.music;
+    // }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    // public void setName(String music) {
+    //     this.music = music;
+    // }
 
-    public String getArtist() {
-        return this.artist;
-    }
+    // public String getArtist() {
+    //     return this.artist;
+    // }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
+    // public void setArtist(String artist) {
+    //     this.artist = artist;
+    // }
 
-    public String getLabel() {
-        return this.label;
-    }
+    // public String getLabel() {
+    //     return this.label;
+    // }
 
-    public void setLabel(String label) {
-        this.label = label;
-    }
+    // public void setLabel(String label) {
+    //     this.label = label;
+    // }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Music music = (Music) o;
-        return musicId.equals(music.musicId) && Objects.equals(name, music.name) && Objects.equals(artist, music.artist) && Objects.equals(label, music.label);
-    }
+    // @Override
+    // public boolean equals(Object o) {
+    //     if (this == o) return true;
+    //     if (o == null || getClass() != o.getClass()) return false;
+    //     Music music = (Music) o;
+    //     return id.equals(music.id) && Objects.equals(music, music.music) && Objects.equals(artist, music.artist) && Objects.equals(label, music.label);
+    // }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(musicId, name, artist, label);
-    }
+    // @Override
+    // public int hashCode() {
+    //     return Objects.hash(id, music, artist, label);
+    // }
     
-    @Override
-    public String toString() {
-        return "{" +
-            " musicId='" + getMusicId() + "'" +
-            ", name='" + getName() + "'" +
-            ", artist='" + getArtist() + "'" +
-            ", label='" + getLabel() + "'" +
-            "}";
-    }
+    // @Override
+    // public String toString() {
+    //     return "{" +
+    //         " musicId='" + getMusicId() + "'" +
+    //         ", music='" + getMusic() + "'" +
+    //         ", artist='" + getArtist() + "'" +
+    //         ", label='" + getLabel() + "'" +
+    //         "}";
+    // }
 }

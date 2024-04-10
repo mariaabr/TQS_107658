@@ -1,6 +1,6 @@
 CREATE TABLE musics (
-    musicId BIGSERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    id BIGSERIAL PRIMARY KEY,
+    music VARCHAR(255) NOT NULL,
     artist VARCHAR(255) NOT NULL,
     label VARCHAR(255) NOT NULL
 );

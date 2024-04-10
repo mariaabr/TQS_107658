@@ -14,22 +14,23 @@ import ua.tqs.repository.MusicRepository;
 
 @Testcontainers
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MusicApplicationTest {
     
     @Container
     public static PostgreSQLContainer container = new PostgreSQLContainer()
         .withUsername("admin")
-        .withPassword("adminpass")
-        .withDatabaseName("testmusics");
+        .withPassword("admin")
+        .withDatabaseName("musics");
 
         @Autowired
         private MusicRepository musicRepository;
 
         @DynamicPropertySource
         static void properties(DynamicPropertyRegistry registry) {
-          registry.add("spring.datasource.url", container::getJdbcUrl);
-          registry.add("spring.datasource.password", container::getPassword);
-          registry.add("spring.datasource.username", container::getUsername);
+            registry.add("spring.datasource.url", container::getJdbcUrl);
+            registry.add("spring.datasource.password", container::getPassword);
+            registry.add("spring.datasource.username", container::getUsername);
         }
       
     @Order(1)
@@ -60,5 +61,4 @@ public class MusicApplicationTest {
 		System.out.println("Getting musics by artist Van Zee");
 		musicRepository.findByArtist("Van Zee").stream().forEach(System.out::println);
 	}
-
 }
